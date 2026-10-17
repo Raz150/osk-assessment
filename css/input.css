@@ -30,7 +30,6 @@
   --shadow-hard-lg: 10px 10px 0 0 var(--color-ink);
 }
 
-/* `js:` variant: styles that only apply once main.js has run */
 @custom-variant js (&:where(.js *));
 
 @layer base {
@@ -44,11 +43,9 @@
   h2 { @apply mb-6 text-[clamp(1.9rem,5vw,2.75rem)] uppercase; }
   h3 { @apply mb-3 text-xl; }
 
-  /* Focus colour switches per background: set --focus on dark sections */
   :focus-visible { outline: 3px solid var(--focus, var(--color-ink)); outline-offset: 3px; }
 }
 
-/* Box: the basic neobrutalist surface (a utility so components can @apply it) */
 @utility box {
   @apply rounded-brand border-[3px] border-ink bg-white shadow-hard;
 }

@@ -6,7 +6,7 @@ A single responsive landing page for **Gameweek Club**, a fictional community fa
 
 - **Live site:** https://osk-assessment.vercel.app/
 - **Design evidence:** [desktop wireframe](docs/wireframes/desktop.png) · [mobile wireframe](docs/wireframes/mobile.png) (SVG sources are in the same folder)
-- **Final commit:** _fill in the hash after the last commit_
+- **Final commit:** _fix: update live site URL and deployment instructions for Vercel_
 
 ## Audience and primary action
 
@@ -157,12 +157,15 @@ All asset paths are relative, so the site works on any host or sub-path.
 - **Graphics:** `assets/favicon.svg` was drawn by hand for this project.
 - **Design references:** the general neobrutalism style (thick outlines, hard offset shadows, flat colour) is a common web design trend. The hero layout (dark vertical columns, geometric rings, X marks, dot grids, half-pill shapes, a framed photo crossed by a colour band, and a bracket under the headline) was rebuilt from a generic stock "football landing page" mock-up I chose as a reference, recoloured in the project palette. No assets, code or text were taken from it: the shapes are CSS and inline SVG written for this project.
 - **References:** [WAI-ARIA Authoring Practices: Tabs pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) for the tab keyboard behaviour.
-- **AI assistance:** Claude Code (Anthropic) helped draft the concept options, the wireframe SVGs, `index.html`, `css/input.css`, `js/*.js`, the tests, this README and the automated browser checks. _Fill in: what you decided or changed yourself (e.g. choosing the concept, reviewing the copy), and how you checked the result. The automated checks are listed under Testing; add your own manual checks._
+- **AI assistance:** Claude Code (Anthropic) helped draft the concept options, the wireframe SVGs, `index.html`, `css/input.css`, `js/*.js`, the tests, this README and the automated browser checks.
+  - **My decisions:** the concept (a Malaysia Super League fantasy mini-league for people who missed the start of the season), the audience and the primary action; the switch from the first green and yellow theme to the pink neobrutalist direction, and the hero mock-up used as a layout reference; the hero photo, chosen after trying two others; the choice of Vercel as host.
+  - **My changes:** I reviewed and edited the page copy, set up the Vercel project, and traced the first failed deploy from its build log.
+  - **How I checked it:** I read the HTML, CSS and JavaScript and ran `npm test` and `npm run build`. I browsed the live site, checked the layout on mobile widths, and tested the form with an empty submit, an invalid email and a valid submit. The automated checks are listed under Testing.
 - **Inherited:** Tailwind CSS 4.3.3 (MIT): its reset (Preflight) and utility classes. Everything in `css/input.css` (tokens, components), the markup, scripts and artwork was written for this project. There is no starter or template.
 
 ## Time spent
 
-_Fill in: approximately X hours (planning ~, design ~, build ~, testing and docs ~)._
+_2.5 hours._
 
 ## Known limitations and what I'd do before production
 
