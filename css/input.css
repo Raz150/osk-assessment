@@ -1,0 +1,114 @@
+/* Source stylesheet. Build with `npm run build` → css/styles.css (generated, do not edit). */
+@import "tailwindcss";
+
+/* ==========================================================================
+   Brand tokens
+   Rules: pitch green for structure, chalk for reading surfaces,
+   floodlight yellow ONLY for the primary action and key highlights.
+   ========================================================================== */
+@theme {
+  --color-pitch: #0f3d2e;
+  --color-pitch-light: #1d6b4f;
+  --color-mint: #e3efe8;
+  --color-mint-dark: #cfe3d7;
+  --color-chalk: #f6f4ee;
+  --color-floodlight: #ffd23f;
+  --color-floodlight-light: #ffdf6e;
+  --color-ink: #14201b;
+  --color-muted: #4a5a53;
+  --color-error: #b3261e;
+  --color-error-bg: #fbe9e7;
+
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius-brand: 6px;
+}
+
+/* `js:` variant: styles that only apply once main.js has run */
+@custom-variant js (&:where(.js *));
+
+@layer base {
+  html { scroll-padding-top: 5rem; }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+  body { @apply bg-chalk text-ink font-sans leading-relaxed; }
+
+  h1, h2, h3 { @apply font-display font-bold leading-[1.05] tracking-[0.01em]; }
+  h2 { @apply mb-4 text-[clamp(2rem,5vw,2.75rem)] uppercase; }
+  h3 { @apply mb-4 text-2xl; }
+
+  /* Focus colour switches per background: set --focus on dark sections */
+  :focus-visible { outline: 3px solid var(--focus, var(--color-pitch)); outline-offset: 3px; }
+}
+
+/* ==========================================================================
+   Repeated patterns
+   ========================================================================== */
+@layer components {
+  .container-page { @apply mx-auto w-full max-w-6xl px-4; }
+  .section { @apply py-16; }
+  .section-intro { @apply mb-4 max-w-2xl text-lg text-muted; }
+
+  /* One primary button style, reserved for the main action */
+  .btn-primary {
+    @apply inline-flex min-h-12 cursor-pointer items-center justify-center rounded-brand
+      border-2 border-pitch bg-floodlight px-6 py-3 font-semibold leading-tight
+      text-pitch no-underline hover:bg-floodlight-light;
+  }
+
+  .nav-link {
+    @apply block py-3 font-semibold no-underline hover:underline hover:underline-offset-4
+      max-md:border-t max-md:border-chalk/20 md:py-2;
+  }
+
+  .card { @apply rounded-brand border-2 border-mint bg-white p-6; }
+  .badge {
+    @apply mb-4 inline-grid size-10 place-items-center rounded-full bg-pitch
+      font-display text-xl font-bold text-floodlight;
+  }
+
+  .tab {
+    @apply min-h-12 flex-1 cursor-pointer rounded-t-brand bg-mint p-2 font-display text-lg
+      font-bold uppercase leading-tight text-pitch hover:bg-mint-dark
+      aria-selected:bg-pitch aria-selected:text-chalk;
+  }
+  .tab-panel { @apply rounded-b-brand bg-chalk p-6 sm:p-8; }
+  .fact { @apply grid grid-cols-[5rem_1fr] gap-4 border-b border-mint py-2; }
+  .fact dt { @apply font-semibold; }
+
+  .timeline-item { @apply grid gap-1 rounded-brand border-l-[6px] border-pitch-light bg-white px-6 py-4; }
+  .timeline-item time { @apply font-display text-xl font-bold uppercase; }
+
+  .stat { @apply rounded-brand border-2 border-pitch-light p-6; }
+  .stat strong { @apply block font-display text-5xl leading-none font-bold text-floodlight; }
+
+  .field { @apply mb-6 min-w-0 border-0 p-0; }
+  .field-label { @apply mb-1 block font-semibold; }
+  .field-hint { @apply font-normal text-muted; }
+  .field-input {
+    @apply min-h-12 w-full rounded-brand border-2 border-muted bg-white px-3 py-2 text-ink
+      aria-invalid:border-error;
+  }
+  .field-error { @apply mt-1 text-[0.9375rem] font-semibold text-error empty:hidden; }
+  .form-status {
+    @apply mb-6 space-y-1 rounded-brand border-l-[6px] p-4 empty:hidden
+      data-[state=error]:border-error data-[state=error]:bg-error-bg data-[state=error]:text-error
+      data-[state=success]:border-pitch data-[state=success]:bg-mint data-[state=success]:text-pitch;
+  }
+  .choice { @apply mt-2 flex items-start gap-2; }
+  .choice input { @apply mt-0.5 size-5 flex-none accent-pitch; }
+
+  .faq-item { @apply border-b-2 border-mint; }
+  .faq-item summary {
+    @apply ml-5 cursor-pointer list-outside py-4 text-lg font-semibold
+      marker:text-pitch-light [[open]>&]:text-pitch-light;
+  }
+  .faq-item p { @apply mb-4 ml-5 text-muted; }
+}
+
+/* Collapsed mobile menu, only once JS is there to open it */
+@media (width < 48rem) {
+  .js .site-nav:not(.is-open) { display: none; }
+}

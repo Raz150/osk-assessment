@@ -58,7 +58,7 @@ function checkField(input) {
 }
 
 function showStatus(type, lines) {
-  status.className = `form__status is-${type}`;
+  status.dataset.state = type;
   status.replaceChildren(...lines.map((text) => Object.assign(document.createElement("p"), { textContent: text })));
 }
 

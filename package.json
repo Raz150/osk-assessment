@@ -3,7 +3,13 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "tailwindcss -i css/input.css -o css/styles.css --minify",
+    "dev": "tailwindcss -i css/input.css -o css/styles.css --watch",
     "start": "npx --yes serve@14.2.4 .",
     "test": "node --test"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.3",
+    "tailwindcss": "4.3.3"
   }
 }
