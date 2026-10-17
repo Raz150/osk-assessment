@@ -1,1 +1,153 @@
-# osk-assessment
+# Gameweek Club: Second-Half League
+
+A single responsive landing page for **Gameweek Club**, a fictional community fantasy football mini-league for the **Malaysia Super League**, based in the fictional town of Bukit Cempaka, Selangor. Entry donations go to a fictional youth football club, Cempaka Muda FC.
+
+> Not affiliated with the Malaysian Football League (MFL), the Malaysia Super League, any club or any official fantasy game. All names, dates, figures and organisations are fictional demo content.
+
+- **Live site:** https://raz150.github.io/osk-assessment/
+- **Design evidence:** [desktop wireframe](docs/wireframes/desktop.png) · [mobile wireframe](docs/wireframes/mobile.png) (SVG sources are in the same folder)
+- **Final commit:** _fill in the hash after the last commit_
+
+## Audience and primary action
+
+- **Audience:** casual or lapsed Malaysia Super League fans in Bukit Cempaka and nearby areas. Some missed the start of the season, some saw their team fall apart, and some find fantasy football intimidating.
+- **Primary action:** **register interest** in the Second-Half League (*Liga Pusingan Kedua*), which starts with the second round of the season.
+- **Visitor flow:** read the hero, then compare formats (tabs), then press "Choose [format]". That fills in the format on the form, and the visitor registers.
+
+## Setup, run, test
+
+No build step and no dependencies to install.
+
+```bash
+git clone https://github.com/Raz150/osk-assessment.git
+cd osk-assessment
+python3 -m http.server 8080      # or: npm start (runs serve@14.2.4 through npx)
+# open http://localhost:8080
+npm test                         # unit tests for the form validation rules (Node 20+)
+```
+
+A local server is needed rather than opening the file directly, because `js/main.js` is an ES module and browsers block modules loaded from `file://`.
+
+## Project structure
+
+```
+index.html           page content and structure
+css/styles.css       brand tokens (:root) and all styles, mobile-first
+js/main.js           mobile nav, format tabs, form behaviour
+js/validate.js       form validation rules (pure functions, unit-tested)
+tests/               node:test tests for validate.js
+assets/              favicon and hero illustration (SVG, made by the author)
+docs/wireframes/     desktop and mobile wireframes (SVG and PNG)
+```
+
+## Stack choice
+
+**Plain HTML, CSS and JavaScript.** The site is one page with three small interactions, and a framework would add a build step, dependencies and bundle size without adding anything the page needs. Without a build, reviewers can read exactly the code that is served, and the live site is the repository with no compiled output in between. The validation rules are in their own ES module so they can be unit-tested with Node's built-in test runner, again without dependencies.
+
+## Design rationale
+
+### Brand rules
+
+| Rule | Applied as |
+|---|---|
+| **Pitch green structures, chalk is for reading.** Dark green `#0f3d2e` for the header, hero, charity band and the important date. Chalk `#f6f4ee` and white for reading surfaces. | Tokens `--green-900`, `--chalk` and `--white` in `css/styles.css` |
+| **Floodlight yellow `#ffd23f` is reserved for the primary action** and a few highlights (wordmark accent, key figures). | `.btn--primary` is the only filled button style |
+| **Two typefaces.** Barlow Condensed (uppercase) for headings, like a stadium scoreboard. Inter for body text, for readability. | `--font-display` and `--font-body` |
+| **8px spacing scale, one 6px corner radius.** | `--s1` to `--s8` and `--radius` |
+
+### Key decisions
+
+1. **Original branding that steers clear of the real game.** The audience will know the official fantasy game, so the look needs to feel like football without copying it. The palette is pitch green and floodlight yellow, with no MFL or club colours, crests, player photos or league logos, and a disclaimer appears in both the FAQ and the footer. This avoids misleading visitors and avoids using assets I don't have permission for.
+2. **Yellow is used only for "Register".** Fantasy football pages are usually busy. Keeping one high-contrast colour for the main action means visitors can always find the next step: in the header, the hero, each format panel and the form.
+3. **Formats as tabs that fill in the form.** The biggest worry for this audience is "which league is for me?". Tabs keep the three formats the same shape (suits, time, entry, prize), so they're easy to compare without a long page, and the "Choose" button carries that decision into the form so the visitor doesn't have to make it twice.
+4. **Local voice.** The copy is in English, the common language of Malaysian football fans online, with familiar Malay terms such as *Pusingan Kedua*, *padang*, *makan* and *Jom!*. Prices are in RM and the deadline is in MYT. This makes it read as a real neighbourhood league rather than a generic template. I used "second round" instead of a gameweek number so the content doesn't depend on the exact MSL fixture count.
+5. **Hero message aimed at latecomers.** The site launches mid-season, so the headline speaks directly to people who think they've missed out: "Missed the start? Join the second half." The illustration shades the second half of the pitch and carries a "Pusingan 2" badge to make the same point visually.
+
+### Plan vs finished site
+
+The finished page follows the wireframe's content order and flow. Differences:
+
+- **Hero illustration on mobile:** the wireframe has a small strip, but the build shows it full width below the buttons. It's lightweight SVG, sits after the main action, and gives the page some visual identity on phones.
+- **Key dates at tablet width:** the wireframe goes straight from vertical (mobile) to a row of four (desktop). The build adds a 2×2 grid between 640px and 960px, because four columns were too cramped at those widths.
+- **FAQ width:** narrowed to a 48rem reading column on desktop instead of the full container, for a comfortable line length.
+- **Form status message:** added an error summary at the top of the form ("Please fix N problems below") as well as the inline errors in the wireframe.
+
+## Interactions
+
+| Interaction | Purpose | States shown | Keyboard |
+|---|---|---|---|
+| **Format tabs** with a "Choose [format]" button | Compare the three formats, then take that choice into the form (the main task) | Selected tab is filled dark green (`aria-selected`) | Tab moves into the tab list; ←/→ wrap round; Home/End; Tab moves into the panel |
+| **Validated demo registration form** | The primary action | Inline error per field (`aria-invalid` plus a message linked with `aria-describedby`), an error summary, a success message; errors clear while the visitor fixes them | Native controls; focus moves to the first invalid field, or to the success message |
+| **FAQ** (native `<details>`) | Answers the questions that stop people joining | Open/closed marker and colour | Native |
+| **Mobile menu** | Navigation below 768px | `aria-expanded`; button text "Menu" / "Close" | Escape closes it and returns focus to the button |
+
+**Demo form:** `submit` is always cancelled with `preventDefault()`. Values are never sent, stored (no cookies or storage) or logged. The success message repeats the team name on the page only, and then the form is reset. The page says this next to the form.
+
+**Without JavaScript:** all three format panels stay visible and the menu stays expanded, so the content and navigation are still usable.
+
+## Deployment
+
+Hosted on **GitHub Pages** from the `main` branch, root folder, over HTTPS.
+
+1. Push to `main`.
+2. In the repo, go to **Settings → Pages → Build and deployment**, choose *Deploy from a branch*, `main`, `/ (root)`. Only needed once.
+3. GitHub publishes to `https://raz150.github.io/osk-assessment/` within about a minute. The progress is under the **Actions** tab ("pages build and deployment").
+
+All asset paths are relative (`css/styles.css`, not `/css/styles.css`), so the site works under the `/osk-assessment/` sub-path.
+
+### Verification and a resolved issue
+
+- **Resolved: `form.name` bug.** In the first version, the "Choose format" button called `form.name.focus()`. `HTMLFormElement.name` is the form's own `name` attribute (a string), not the input called "name", so it would have thrown an error. I switched all field access to `form.elements.name` etc. and confirmed it with the automated interaction run below (focus lands on `#name`, no page errors).
+- **Verification:** an automated browser script loads the page at each test width in Chromium and Firefox. It fails on horizontal overflow, console errors, failed requests or 4xx/5xx responses, then drives every interaction. After deploying, check the live URL in a private window, check that DevTools Network shows only HTTPS requests (no mixed content), and check that the favicon, fonts and SVG all load.
+
+## Testing
+
+**Widths:** 320, 375, 480, 768, 900, 1024, 1280 and 1440px. The breakpoints are 640px and 960px, so 480, 900 and 1024 cover the in-between ranges.
+
+| Check | How | Result |
+|---|---|---|
+| Horizontal overflow | `scrollWidth - clientWidth` at every width, Chromium 131 and Firefox 132 (Playwright 1.49.1) | 0px at every width in both |
+| Console errors and missing resources | Same run, listening for console errors, page errors and failed or 4xx requests | None |
+| Tabs | Arrow keys, wrap-around, panel hidden/shown | Pass in both |
+| Form (invalid) | Empty submit → 5 errors, summary, focus on first field. Bad email → format message. Typing a fix clears the error | Pass in both |
+| Form (valid, then repeated) | Valid submit → success message, focus on the message, form reset. Submitting again empty → errors again | Pass in both |
+| "Choose format" pre-fill | Selects the format and focuses the name field | Pass in both |
+| Mobile menu | Opens, Escape closes | Pass in both |
+| Accessibility | axe-core 4.10 (WCAG 2.1 A/AA and best practice) at 375 and 1280px, including the form's error state | No violations |
+| Unit tests | `npm test`: required fields, email format, team name length | 4/4 pass |
+| _Real mobile device_ | _To fill in: device, browser, result_ | |
+| _Manual keyboard pass_ | _To fill in: Tab through the whole page, check focus is visible everywhere (yellow outline on dark sections, green on light)_ | |
+| _Live site in private window_ | _To fill in after deploying_ | |
+
+## Maintenance
+
+- **Update content:** all text is in `index.html`, in sections with clear `id`s (`#how`, `#formats`, `#dates`, `#charity`, `#register`, `#faq`). For example, to change a date, edit both the visible text and the `datetime` attribute in `#dates`. To add a FAQ, copy a `<details>` block. To add a format, add a tab button, a panel and an `<option>` with the same value as the panel's `data-choose`.
+- **Change brand colours or fonts:** edit the tokens at the top of `css/styles.css`, then re-check contrast.
+- **Redeploy:** commit and push to `main`. Pages redeploys automatically.
+- **Restore a previous version:** `git revert <bad-commit>` then push. This keeps the history, and Pages redeploys the reverted state. To inspect an old version locally: `git checkout <hash>`.
+
+## Security and third parties
+
+- HTTPS only (GitHub Pages enforces it). All asset URLs are relative or `https://`.
+- No credentials, API keys or environment variables anywhere in the project.
+- **Third parties:** Google Fonts (CSS and font files) is the only external request. No analytics, trackers or third-party scripts. No runtime dependencies. Playwright and axe-core were used only temporarily for testing and are not in this repo.
+
+## Credits and assistance
+
+- **Fonts:** [Barlow Condensed](https://fonts.google.com/specimen/Barlow+Condensed) and [Inter](https://fonts.google.com/specimen/Inter), SIL Open Font License, served by Google Fonts.
+- **Illustrations:** `assets/hero-pitch.svg` and `assets/favicon.svg` were drawn by hand in SVG for this project.
+- **References:** [WAI-ARIA Authoring Practices: Tabs pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) for the tab keyboard behaviour.
+- **AI assistance:** Claude Code (Anthropic) helped draft the concept options, the wireframe SVGs, `index.html`, `css/styles.css`, `js/*.js`, the tests, this README and the automated browser checks. _Fill in: what you decided or changed yourself (e.g. choosing the concept, reviewing the copy), and how you checked the result. The automated checks are listed under Testing; add your own manual checks._
+- **Inherited:** nothing. There is no starter, template or library code.
+
+## Time spent
+
+_Fill in: approximately X hours (planning ~, design ~, build ~, testing and docs ~)._
+
+## Known limitations and what I'd do before production
+
+- **The form is a demo.** In production it would need a real backend (or a form service) with server-side validation, spam protection, a privacy notice and consent wording, and real confirmation emails.
+- **Google Fonts is a third-party request** that shares visitor IPs with Google. Before production I'd self-host the two WOFF2 files and add a strict Content-Security-Policy.
+- **No social sharing image** (`og:image`) or structured event data yet.
+- **Dates are hard-coded** in the HTML, so registration doesn't close automatically after the deadline.
+- Automated testing covered Chromium and Firefox engines. Safari/WebKit was only covered if it's noted under Testing above.

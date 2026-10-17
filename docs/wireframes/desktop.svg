@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 2560" font-family="Arial, sans-serif" font-size="18">
+  <title>Gameweek Club desktop wireframe (1280px)</title>
+  <style>
+    .box{fill:#f2f2f2;stroke:#888;stroke-width:2}
+    .ph{fill:#d9d9d9;stroke:#888;stroke-width:1.5}
+    .cta{fill:#333}
+    .ctat{fill:#fff;font-weight:bold}
+    .h{font-weight:bold;font-size:22px}
+    .lbl{fill:#666;font-size:15px}
+    .flow{fill:#c00;font-weight:bold;font-size:20px}
+  </style>
+  <rect width="1280" height="2560" fill="#fff"/>
+
+  <!-- Header -->
+  <rect class="box" x="0" y="0" width="1280" height="80"/>
+  <text class="h" x="80" y="48">GAMEWEEK CLUB</text>
+  <text x="620" y="48">How it works · Formats · Dates · FAQ</text>
+  <rect class="cta" x="1040" y="20" width="160" height="40" rx="4"/><text class="ctat" x="1062" y="46">Register</text>
+  <text class="lbl" x="80" y="72">Sticky header, nav links jump to sections</text>
+
+  <!-- Hero -->
+  <rect class="box" x="0" y="80" width="1280" height="440"/>
+  <text class="lbl" x="80" y="130">EYEBROW: Malaysia Super League · Liga Pusingan Kedua</text>
+  <text class="h" x="80" y="190" font-size="44">Missed the start?</text>
+  <text class="h" x="80" y="244" font-size="44">Join the second half.</text>
+  <text x="80" y="300">One-paragraph intro: clean slate for the second round, friendly local league,</text>
+  <text x="80" y="326">entry donations go to Cempaka Muda FC.</text>
+  <rect class="cta" x="80" y="370" width="260" height="56" rx="4"/><text class="ctat" x="110" y="405">Register interest →</text>
+  <text x="370" y="405">See the formats</text>
+  <text class="flow" x="40" y="405">1</text>
+  <rect class="ph" x="760" y="130" width="440" height="340"/>
+  <text class="lbl" x="860" y="305">SVG pitch / badge illustration</text>
+
+  <!-- How it works -->
+  <rect class="box" x="0" y="520" width="1280" height="320"/>
+  <text class="h" x="80" y="580">How it works</text>
+  <rect class="ph" x="80" y="610" width="350" height="190"/><text x="100" y="650">1. Register interest</text>
+  <rect class="ph" x="465" y="610" width="350" height="190"/><text x="485" y="650">2. Get your league code</text>
+  <rect class="ph" x="850" y="610" width="350" height="190"/><text x="870" y="650">3. Play the second round</text>
+  <text class="lbl" x="100" y="680">3 equal cards, icon + short text</text>
+
+  <!-- Formats (tabs) -->
+  <rect class="box" x="0" y="840" width="1280" height="460"/>
+  <text class="h" x="80" y="900">Choose your format</text>
+  <rect class="ph" x="80" y="930" width="200" height="48"/><text x="110" y="960">Classic</text>
+  <rect class="ph" x="280" y="930" width="200" height="48" fill="#fff"/><text x="300" y="960">Head-to-Head</text>
+  <rect class="ph" x="480" y="930" width="200" height="48" fill="#fff"/><text x="500" y="960">Beginners</text>
+  <text class="lbl" x="700" y="960">← TABS (selected = filled)</text>
+  <rect class="ph" x="80" y="978" width="1120" height="280" fill="#fff"/>
+  <text x="110" y="1030">Panel: who it suits · scoring · time per week · prize</text>
+  <text x="110" y="1060">Key facts list (3–4 rows)</text>
+  <rect class="cta" x="110" y="1180" width="280" height="50" rx="4"/><text class="ctat" x="130" y="1212">Choose this format →</text>
+  <text class="lbl" x="410" y="1212">pre-fills form + scrolls to Register</text>
+  <text class="flow" x="40" y="960">2</text>
+
+  <!-- Key dates -->
+  <rect class="box" x="0" y="1300" width="1280" height="240"/>
+  <text class="h" x="80" y="1360">Key dates</text>
+  <rect class="ph" x="80" y="1390" width="260" height="110"/><text x="100" y="1430">Registration opens</text>
+  <rect class="ph" x="370" y="1390" width="260" height="110"/><text x="390" y="1430">Registration closes</text>
+  <rect class="ph" x="660" y="1390" width="260" height="110"/><text x="680" y="1430">2nd round kick-off</text>
+  <rect class="ph" x="950" y="1390" width="250" height="110"/><text x="970" y="1430">Final + awards night</text>
+  <text class="lbl" x="100" y="1460">timeline row</text>
+
+  <!-- Charity -->
+  <rect class="box" x="0" y="1540" width="1280" height="260"/>
+  <text class="h" x="80" y="1600">Where your entry goes</text>
+  <text x="80" y="1640">Short paragraph + 3 stat tiles (kits, pitch hire, coaching badges)</text>
+  <rect class="ph" x="80" y="1670" width="350" height="100"/>
+  <rect class="ph" x="465" y="1670" width="350" height="100"/>
+  <rect class="ph" x="850" y="1670" width="350" height="100"/>
+
+  <!-- Register -->
+  <rect class="box" x="0" y="1800" width="1280" height="440"/>
+  <text class="h" x="80" y="1860">Register interest</text>
+  <text class="lbl" x="80" y="1888">DEMO banner: nothing is sent or stored</text>
+  <text x="80" y="1930">Left: what happens next</text>
+  <text x="80" y="1960">(league code by email, rules)</text>
+  <rect class="ph" x="640" y="1900" width="560" height="300" fill="#fff"/>
+  <text x="660" y="1940">Name *  ·  Email *</text>
+  <text x="660" y="1980">Team name *  ·  Format * (select)</text>
+  <text x="660" y="2020">Experience (radio)  ·  ☐ I agree to the league rules *</text>
+  <text class="lbl" x="660" y="2060">inline error under each field; success message replaces nothing</text>
+  <rect class="cta" x="660" y="2120" width="220" height="50" rx="4"/><text class="ctat" x="680" y="2152">Register interest</text>
+  <text class="flow" x="610" y="2152">3</text>
+
+  <!-- FAQ -->
+  <rect class="box" x="0" y="2240" width="1280" height="200"/>
+  <text class="h" x="80" y="2290">FAQ</text>
+  <rect class="ph" x="80" y="2310" width="1120" height="36" fill="#fff"/><text x="100" y="2335">▸ I've never played. Is that OK?</text>
+  <rect class="ph" x="80" y="2354" width="1120" height="36" fill="#fff"/><text x="100" y="2379">▸ What does the entry fee go to?</text>
+  <rect class="ph" x="80" y="2398" width="1120" height="36" fill="#fff"/><text x="100" y="2423">▸ … (expandable)</text>
+
+  <!-- Footer -->
+  <rect class="box" x="0" y="2440" width="1280" height="120" fill="#ddd"/>
+  <text x="80" y="2490">Wordmark · contact (fictional) · credits · not-affiliated disclaimer</text>
+  <text class="lbl" x="80" y="2525">Flow: 1 hero CTA → 2 pick format → 3 register</text>
+</svg>

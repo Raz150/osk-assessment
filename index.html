@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en-MY">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Second-Half League | Gameweek Club, Bukit Cempaka fantasy football</title>
+  <meta name="description" content="Missed the start of the Malaysia Super League fantasy season? Join Gameweek Club's friendly Second-Half League in Bukit Cempaka, Selangor from the second round. Three formats, trophies not cash, donations to Cempaka Muda FC.">
+  <meta name="theme-color" content="#0f3d2e">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="wordmark" href="#top" aria-label="Gameweek Club home">Gameweek<span>Club</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#formats">Formats</a></li>
+          <li><a href="#dates">Key dates</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a class="btn btn--primary btn--small" href="#register">Register</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow">Malaysia Super League · Liga Pusingan Kedua</p>
+          <h1 id="hero-title">Missed the start? <span>Join the second half.</span></h1>
+          <p class="lead">Your Super League team fell apart by October, or you never got round to picking one. Our friendly Bukit Cempaka mini-league resets for the second round so everyone starts level. Play for trophies and bragging rights at the mamak, and your entry goes to Cempaka Muda FC. Jom!</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#register">Register interest</a>
+            <a class="text-link" href="#formats">See the formats</a>
+          </div>
+        </div>
+        <img class="hero__art" src="assets/hero-pitch.svg" alt="" width="480" height="400">
+      </div>
+    </section>
+
+    <section class="section" id="how" aria-labelledby="how-title">
+      <div class="container">
+        <h2 id="how-title">How it works</h2>
+        <ol class="steps">
+          <li class="card">
+            <span class="badge" aria-hidden="true">1</span>
+            <h3>Register interest</h3>
+            <p>Tell us your team name and pick a format. It takes about a minute.</p>
+          </li>
+          <li class="card">
+            <span class="badge" aria-hidden="true">2</span>
+            <h3>Get your league code</h3>
+            <p>We email a code before the deadline. Enter it in the free fantasy game you already use.</p>
+          </li>
+          <li class="card">
+            <span class="badge" aria-hidden="true">3</span>
+            <h3>Play the second round</h3>
+            <p>Only points from the first gameweek after the mid-season break to the final matchday count. Your first-round score doesn't matter here.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="formats" aria-labelledby="formats-title">
+      <div class="container">
+        <h2 id="formats-title">Choose your format</h2>
+        <p class="section__intro">Three ways to play, all running at the same time. You can switch format until registration closes.</p>
+
+        <div class="tabs" data-tabs>
+          <div class="tabs__list" role="tablist" aria-label="League formats">
+            <button class="tabs__tab" type="button" role="tab" id="tab-classic" aria-controls="panel-classic" aria-selected="true">Classic</button>
+            <button class="tabs__tab" type="button" role="tab" id="tab-h2h" aria-controls="panel-h2h" aria-selected="false">Head-to-Head</button>
+            <button class="tabs__tab" type="button" role="tab" id="tab-beginners" aria-controls="panel-beginners" aria-selected="false">Beginners</button>
+          </div>
+
+          <div class="tabs__panel" role="tabpanel" id="panel-classic" aria-labelledby="tab-classic" tabindex="0">
+            <h3>Classic</h3>
+            <p>The highest total score across the second round wins. A steady league for people who like a long race.</p>
+            <dl class="facts">
+              <div><dt>Suits</dt><dd>Anyone who plays most weeks</dd></div>
+              <div><dt>Time</dt><dd>About 10 minutes a week</dd></div>
+              <div><dt>Entry</dt><dd>Suggested RM20 donation</dd></div>
+              <div><dt>Prize</dt><dd>The Perisai Pusingan Kedua (Second-Half Shield)</dd></div>
+            </dl>
+            <button class="btn btn--primary" type="button" data-choose="classic">Choose Classic</button>
+          </div>
+
+          <div class="tabs__panel" role="tabpanel" id="panel-h2h" aria-labelledby="tab-h2h" tabindex="0">
+            <h3>Head-to-Head</h3>
+            <p>Every gameweek you play one other manager. A win is worth 3 points and a draw 1. The top four go into a play-off over the last two gameweeks.</p>
+            <dl class="facts">
+              <div><dt>Suits</dt><dd>People who like a weekly rivalry</dd></div>
+              <div><dt>Time</dt><dd>10–15 minutes a week</dd></div>
+              <div><dt>Entry</dt><dd>Suggested RM20 donation</dd></div>
+              <div><dt>Prize</dt><dd>The Piala H2H Cempaka</dd></div>
+            </dl>
+            <button class="btn btn--primary" type="button" data-choose="h2h">Choose Head-to-Head</button>
+          </div>
+
+          <div class="tabs__panel" role="tabpanel" id="panel-beginners" aria-labelledby="tab-beginners" tabindex="0">
+            <h3>Beginners</h3>
+            <p>Classic scoring, for managers in their first season only. You get a short tips email before each deadline and an experienced player you can ask questions.</p>
+            <dl class="facts">
+              <div><dt>Suits</dt><dd>First-time managers</dd></div>
+              <div><dt>Time</dt><dd>About 5 minutes a week</dd></div>
+              <div><dt>Entry</dt><dd>Free (donations welcome)</dd></div>
+              <div><dt>Prize</dt><dd>Rookie of the Year medal</dd></div>
+            </dl>
+            <button class="btn btn--primary" type="button" data-choose="beginners">Choose Beginners</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="dates" aria-labelledby="dates-title">
+      <div class="container">
+        <h2 id="dates-title">Key dates</h2>
+        <ol class="timeline">
+          <li><time datetime="2026-11-02">Mon 2 Nov 2026</time><span>Registration opens</span></li>
+          <li class="timeline__key"><time datetime="2026-12-30">Wed 30 Dec 2026</time><span>Registration closes at 6pm (MYT)</span></li>
+          <li><time datetime="2027-01-09">Sat 9 Jan 2027</time><span>Second round kicks off</span></li>
+          <li><time datetime="2027-05-29">Sat 29 May 2027</time><span>Awards night and makan at Dewan Komuniti Bukit Cempaka</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section--dark" id="charity" aria-labelledby="charity-title">
+      <div class="container">
+        <h2 id="charity-title">Where your entry goes</h2>
+        <p class="section__intro">There's no cash prize. Every donation goes to Cempaka Muda FC, a volunteer-run club for 160 players aged 6 to 16. Last season's league raised RM6,850, which paid for:</p>
+        <ul class="stats">
+          <li><strong>3</strong> new sets of jerseys</li>
+          <li><strong>40</strong> hours of floodlit padang hire</li>
+          <li><strong>6</strong> volunteers through grassroots coaching courses</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="register" aria-labelledby="register-title">
+      <div class="container register">
+        <div class="register__info">
+          <h2 id="register-title">Register interest</h2>
+          <p class="demo-note"><strong>Demo form:</strong> this is a portfolio project. Nothing you type is sent, stored or logged.</p>
+          <h3>What happens next</h3>
+          <ul class="ticks">
+            <li>You'll get your league code by email before 30 December.</li>
+            <li>The league rules fit on one page and come with your code.</li>
+            <li>You can donate when you join, or later. It's never required.</li>
+          </ul>
+        </div>
+
+        <form class="form" id="register-form" novalidate>
+          <div class="form__status" id="form-status" role="status" tabindex="-1"></div>
+
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error">
+            <p class="field__error" id="name-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error">
+            <p class="field__error" id="email-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="team">Team name <span class="field__hint" id="team-hint">(up to 20 characters)</span></label>
+            <input id="team" name="team" type="text" maxlength="20" required aria-describedby="team-hint team-error">
+            <p class="field__error" id="team-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="format">Format</label>
+            <select id="format" name="format" required aria-describedby="format-error">
+              <option value="">Choose a format</option>
+              <option value="classic">Classic</option>
+              <option value="h2h">Head-to-Head</option>
+              <option value="beginners">Beginners</option>
+            </select>
+            <p class="field__error" id="format-error"></p>
+          </div>
+
+          <fieldset class="field">
+            <legend>Fantasy football experience <span class="field__hint">(optional)</span></legend>
+            <div class="choice"><input type="radio" id="exp-new" name="experience" value="new"><label for="exp-new">Never played</label></div>
+            <div class="choice"><input type="radio" id="exp-some" name="experience" value="some"><label for="exp-some">Played a season or two</label></div>
+            <div class="choice"><input type="radio" id="exp-regular" name="experience" value="regular"><label for="exp-regular">Play every year</label></div>
+          </fieldset>
+
+          <div class="field">
+            <div class="choice">
+              <input type="checkbox" id="rules" name="rules" required aria-describedby="rules-error">
+              <label for="rules">I'll play in good spirit and follow the league rules</label>
+            </div>
+            <p class="field__error" id="rules-error"></p>
+          </div>
+
+          <button class="btn btn--primary btn--block" type="submit">Register interest</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="faq" aria-labelledby="faq-title">
+      <div class="container container--narrow">
+        <h2 id="faq-title">Questions</h2>
+        <div class="faq">
+          <details>
+            <summary>I've never played fantasy football. Is that OK?</summary>
+            <p>Yes. Join the Beginners format and you'll get a short tips email before each deadline, plus an experienced player you can ask. Most people have their squad picked in 20 minutes.</p>
+          </details>
+          <details>
+            <summary>Do I need a new team?</summary>
+            <p>No. Keep the team you already have. Only points scored in the second round count in this league.</p>
+          </details>
+          <details>
+            <summary>Is there prize money?</summary>
+            <p>No. Winners get trophies, presented at the awards night. Every donation goes to Cempaka Muda FC.</p>
+          </details>
+          <details>
+            <summary>What if I miss a deadline?</summary>
+            <p>Your team keeps playing with its last saved line-up. Nobody is removed for being inactive.</p>
+          </details>
+          <details>
+            <summary>Is this the official game?</summary>
+            <p>No. Gameweek Club is an independent local group that runs a private league inside the free fantasy game. We aren't connected to the Malaysian Football League, any club or any game provider.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div>
+        <p class="wordmark wordmark--footer">Gameweek<span>Club</span></p>
+        <p>A volunteer-run fantasy football league in Bukit Cempaka, Selangor.<br>hello@gameweekclub.example</p>
+      </div>
+      <div class="site-footer__small">
+        <p>Fictional organisation created for a web design assessment. Not affiliated with the Malaysian Football League (MFL), the Malaysia Super League, any club or any official fantasy game.</p>
+        <p>Illustrations by the author. Fonts: Barlow Condensed and Inter (SIL Open Font License) via Google Fonts.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
