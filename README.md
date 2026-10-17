@@ -51,7 +51,7 @@ docs/wireframes/     desktop and mobile wireframes (SVG and PNG)
 **Static HTML, Tailwind CSS (v4, through its CLI) and plain JavaScript.**
 
 - **No JavaScript framework.** The site is one page with three small interactions, and React or Next.js would add bundle size and complexity without adding anything the page needs.
-- **Tailwind for styling.** Brand tokens live in one `@theme` block, so colours, fonts and the radius are defined once and every utility (`bg-pitch`, `text-floodlight`, `rounded-brand`) uses them. Repeated patterns (buttons, cards, tabs, form fields, FAQ items) are component classes in `css/input.css` built with `@apply`, so they stay consistent. One-off layout is done with utilities in the HTML.
+- **Tailwind for styling.** Brand tokens live in one `@theme` block, so colours, fonts and the radius are defined once and every utility (`bg-primary`, `shadow-hard`, `rounded-brand`) uses them. Repeated patterns (buttons, cards, tabs, form fields, FAQ items) are component classes in `css/input.css` built with `@apply`, so they stay consistent. One-off layout is done with utilities in the HTML.
 - **The CLI, not the CDN script.** Tailwind's CDN "play" script compiles in the browser and warns in the console that it isn't for production. The CLI outputs one minified 19 KB file that contains only the classes the page uses.
 - **The validation rules** are in their own ES module, so they can be unit-tested with Node's built-in test runner without extra dependencies.
 
@@ -61,24 +61,27 @@ docs/wireframes/     desktop and mobile wireframes (SVG and PNG)
 
 | Rule | Applied as |
 |---|---|
-| **Pitch green structures, chalk is for reading.** Dark green `#0f3d2e` for the header, hero, charity band and the important date. Chalk `#f6f4ee` and white for reading surfaces. | Tokens `--color-pitch`, `--color-chalk` and `bg-white` in `css/input.css` `@theme` |
-| **Floodlight yellow `#ffd23f` is reserved for the primary action** and a few highlights (wordmark accent, key figures). | `.btn--primary` is the only filled button style |
-| **Two typefaces.** Barlow Condensed (uppercase) for headings, like a stadium scoreboard. Inter for body text, for readability. | `--font-display` and `--font-body` |
-| **8px spacing scale, one 6px corner radius.** | `--s1` to `--s8` and `--radius` |
+| **Black outlines and hard shadows.** Every surface has a 3px ink-black border, and raised items (cards, buttons, form, photo) cast an unblurred black offset shadow. This is the neobrutalist signature: flat, bold, nothing hidden. | `box` utility, `--shadow-hard-*` tokens in `css/input.css` `@theme` |
+| **Hot pink `#ff7ce0` means "act here or selected".** It's used for the primary button (hover `#ff30cd`), the selected tab, the open FAQ item, the key deadline and one featured band. Soft pink `#ffd3f4` is the page background. | `--color-primary`, `--color-primary-hover`, `--color-accent`; `.btn-primary` is the only pink button |
+| **Text is always black on pink.** Black on all three pinks passes WCAG AA (8.3:1, 5.9:1, 14.3:1). White text is never placed on pink (only 3.2:1 on the hover pink). | `--color-ink` `#111111` |
+| **Two typefaces.** Archivo Black (uppercase) for headings, chunky like a match-day poster. Inter for body text, for readability. | `--font-display` and `--font-sans` |
+| **Tailwind's spacing scale in 8px steps (mostly), one 10px corner radius, slight rotations only on stickers and highlights.** | `--radius-brand`, `.sticker` |
 
 ### Key decisions
 
-1. **Original branding that steers clear of the real game.** The audience will know the official fantasy game, so the look needs to feel like football without copying it. The palette is pitch green and floodlight yellow, with no MFL or club colours, crests, player photos or league logos, and a disclaimer appears in both the FAQ and the footer. This avoids misleading visitors and avoids using assets I don't have permission for.
-2. **Yellow is used only for "Register".** Fantasy football pages are usually busy. Keeping one high-contrast colour for the main action means visitors can always find the next step: in the header, the hero, each format panel and the form.
+1. **Original branding that steers clear of the real game.** The audience will know the official fantasy game and Malaysian club colours, so the site uses a deliberately unexpected neobrutalist pink theme instead: no MFL or club colours, crests, player photos or league logos. A disclaimer appears in both the FAQ and the footer. This avoids misleading visitors and avoids using assets I don't have permission for.
+2. **Neobrutalism for a friendly, low-pressure league.** Football sites usually look serious and corporate. Thick outlines, sticker-like labels and buttons that visibly press in make the page feel playful and approachable, which suits people who find fantasy football intimidating. The hard edges also keep interactive things obvious: every button has the same border-and-shadow "lift", and pink always marks the next step.
 3. **Formats as tabs that fill in the form.** The biggest worry for this audience is "which league is for me?". Tabs keep the three formats the same shape (suits, time, entry, prize), so they're easy to compare without a long page, and the "Choose" button carries that decision into the form so the visitor doesn't have to make it twice.
 4. **Local voice.** The copy is in English, the common language of Malaysian football fans online, with familiar Malay terms such as *Pusingan Kedua*, *padang*, *makan* and *Jom!*. Prices are in RM and the deadline is in MYT. This makes it read as a real neighbourhood league rather than a generic template. I used "second round" instead of a gameweek number so the content doesn't depend on the exact MSL fixture count.
-5. **Hero message aimed at latecomers.** The site launches mid-season, so the headline speaks directly to people who think they've missed out: "Missed the start? Join the second half." The illustration shades the second half of the pitch and carries a "Pusingan 2" badge to make the same point visually.
+5. **Hero message aimed at latecomers.** The site launches mid-season, so the headline speaks directly to people who think they've missed out: "Missed the start? Join the second half." The photo shows players on the halfway line, and a "Pusingan 2" sticker makes the same point visually.
 
 ### Plan vs finished site
 
 The finished page follows the wireframe's content order and flow. Differences:
 
-- **Hero illustration on mobile:** the wireframe has a small strip, but the build shows it full width below the buttons. It's lightweight SVG, sits after the main action, and gives the page some visual identity on phones.
+- **Hero visual:** the wireframe planned an SVG pitch illustration beside the text. The build uses a dark three-column hero: decorative shapes, then the copy, then a black-and-white photo of a community futsal match in a thick soft-pink frame. A real photo makes the league feel real. Black and white keeps it from clashing with the pink palette. Below 1024px the columns stack, the decoration column is hidden, and the menu collapses, because the logo block and full nav don't fit side by side at tablet width.
+- **Visual theme:** the first build used a pitch-green and yellow palette. I re-themed it to neobrutalism in pink (see Brand rules) to make the page more distinctive and playful. Because all colours, fonts, shadows and radii are tokens and repeated patterns are component classes, the re-theme mostly changed `css/input.css` and the class names in `index.html`; the content and JavaScript didn't need to change.
+
 - **Key dates at tablet width:** the wireframe goes straight from vertical (mobile) to a row of four (desktop). The build adds a 2×2 grid between 640px and 1024px, because four columns were too cramped at those widths.
 - **FAQ width:** narrowed to a 48rem reading column on desktop instead of the full container, for a comfortable line length.
 - **Form status message:** added an error summary at the top of the form ("Please fix N problems below") as well as the inline errors in the wireframe.
@@ -87,10 +90,10 @@ The finished page follows the wireframe's content order and flow. Differences:
 
 | Interaction | Purpose | States shown | Keyboard |
 |---|---|---|---|
-| **Format tabs** with a "Choose [format]" button | Compare the three formats, then take that choice into the form (the main task) | Selected tab is filled dark green (`aria-selected`) | Tab moves into the tab list; ←/→ wrap round; Home/End; Tab moves into the panel |
+| **Format tabs** with a "Choose [format]" button | Compare the three formats, then take that choice into the form (the main task) | Selected tab turns hot pink and "presses in" (shadow removed) (`aria-selected`) | Tab moves into the tab list; ←/→ wrap round; Home/End; Tab moves into the panel |
 | **Validated demo registration form** | The primary action | Inline error per field (`aria-invalid` plus a message linked with `aria-describedby`), an error summary, a success message; errors clear while the visitor fixes them | Native controls; focus moves to the first invalid field, or to the success message |
-| **FAQ** (native `<details>`) | Answers the questions that stop people joining | Open/closed marker and colour | Native |
-| **Mobile menu** | Navigation below 768px | `aria-expanded`; button text "Menu" / "Close" | Escape closes it and returns focus to the button |
+| **FAQ** (native `<details>`) | Answers the questions that stop people joining | Open item's question turns hot pink with a divider | Native |
+| **Mobile menu** | Navigation below 1024px | `aria-expanded`; button text "Menu" / "Close" | Escape closes it and returns focus to the button |
 
 **Demo form:** `submit` is always cancelled with `preventDefault()`. Values are never sent, stored (no cookies or storage) or logged. The success message repeats the team name on the page only, and then the form is reset. The page says this next to the form.
 
@@ -115,7 +118,7 @@ All asset paths are relative (`css/styles.css`, not `/css/styles.css`), so the s
 
 ## Testing
 
-**Widths:** 320, 375, 480, 768, 900, 1024, 1280 and 1440px. The breakpoints are Tailwind's `sm` 640px (grids), `md` 768px (menu) and `lg` 1024px (two-column hero and form), so 480, 900 and 1280 cover the in-between ranges.
+**Widths:** 320, 375, 480, 768, 900, 1024, 1280, 1440 and 1920px. The breakpoints are Tailwind's `sm` 640px (grids), `lg` 1024px (full menu, three-column hero, two-column form), so 480, 900 and 1280 cover the in-between ranges.
 
 | Check | How | Result |
 |---|---|---|
@@ -129,7 +132,7 @@ All asset paths are relative (`css/styles.css`, not `/css/styles.css`), so the s
 | Accessibility | axe-core 4.10 (WCAG 2.1 A/AA and best practice) at 375 and 1280px, including the form's error state | No violations |
 | Unit tests | `npm test`: required fields, email format, team name length | 4/4 pass |
 | _Real mobile device_ | _To fill in: device, browser, result_ | |
-| _Manual keyboard pass_ | _To fill in: Tab through the whole page, check focus is visible everywhere (yellow outline on dark sections, green on light)_ | |
+| _Manual keyboard pass_ | _To fill in: Tab through the whole page, check focus is visible everywhere (black outline on light sections, pink on the dark footer)_ | |
 | _Live site in private window_ | _To fill in after deploying_ | |
 
 ## Maintenance
@@ -147,8 +150,10 @@ All asset paths are relative (`css/styles.css`, not `/css/styles.css`), so the s
 
 ## Credits and assistance
 
-- **Fonts:** [Barlow Condensed](https://fonts.google.com/specimen/Barlow+Condensed) and [Inter](https://fonts.google.com/specimen/Inter), SIL Open Font License, served by Google Fonts.
-- **Illustrations:** `assets/hero-pitch.svg` and `assets/favicon.svg` were drawn by hand in SVG for this project.
+- **Fonts:** [Archivo Black](https://fonts.google.com/specimen/Archivo+Black) and [Inter](https://fonts.google.com/specimen/Inter), SIL Open Font License, served by Google Fonts.
+- **Hero photo:** ["The Final Match"](https://commons.wikimedia.org/wiki/File:The_Final_Match_(5194796996).jpg) by Azlan DuPree, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), via Wikimedia Commons. It was taken at a 2010 futsal tournament run by the Malaysian Students' Association Japan. Changes: resized to 800px and 1400px, converted to WebP (`assets/halfway-line-*.webp`), cropped to 4:5 and shown in black and white with CSS (`grayscale`). Also credited in the site footer. It was chosen because there are no identifiable faces and the halfway line matches the "second half" message.
+- **Graphics:** `assets/favicon.svg` was drawn by hand for this project.
+- **Design references:** the general neobrutalism style (thick outlines, hard offset shadows, flat colour) is a common web design trend. The hero layout (dark vertical columns, geometric rings, X marks, dot grids, half-pill shapes, a framed photo crossed by a colour band, and a bracket under the headline) was rebuilt from a generic stock "football landing page" mock-up the client supplied as a reference, recoloured in the project palette. No assets, code or text were taken from it: the shapes are CSS and inline SVG written for this project.
 - **References:** [WAI-ARIA Authoring Practices: Tabs pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) for the tab keyboard behaviour.
 - **AI assistance:** Claude Code (Anthropic) helped draft the concept options, the wireframe SVGs, `index.html`, `css/input.css`, `js/*.js`, the tests, this README and the automated browser checks. _Fill in: what you decided or changed yourself (e.g. choosing the concept, reviewing the copy), and how you checked the result. The automated checks are listed under Testing; add your own manual checks._
 - **Inherited:** Tailwind CSS 4.3.3 (MIT): its reset (Preflight) and utility classes. Everything in `css/input.css` (tokens, components), the markup, scripts and artwork was written for this project. There is no starter or template.

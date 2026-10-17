@@ -2,45 +2,55 @@
 @import "tailwindcss";
 
 /* ==========================================================================
-   Brand tokens
-   Rules: pitch green for structure, chalk for reading surfaces,
-   floodlight yellow ONLY for the primary action and key highlights.
+   Brand tokens: neobrutalism
+   Rules:
+   1. Everything sits in a 3px black outline. Raised things get a hard,
+      unblurred black offset shadow.
+   2. Hot pink (primary) marks the main action and the selected/active state.
+   3. Soft pink (accent) is the page background and the quiet highlight.
+   4. Text is always ink-black on pink: white text never goes on pink.
    ========================================================================== */
 @theme {
-  --color-pitch: #0f3d2e;
-  --color-pitch-light: #1d6b4f;
-  --color-mint: #e3efe8;
-  --color-mint-dark: #cfe3d7;
-  --color-chalk: #f6f4ee;
-  --color-floodlight: #ffd23f;
-  --color-floodlight-light: #ffdf6e;
-  --color-ink: #14201b;
-  --color-muted: #4a5a53;
+  --color-primary: #ff7ce0;
+  --color-primary-hover: #ff30cd;
+  --color-accent: #ffd3f4;
+  --color-ink: #111111;
+  --color-ink-soft: #2a2a33;
+  --color-muted: #4a4a4a;
   --color-error: #b3261e;
-  --color-error-bg: #fbe9e7;
+  --color-error-bg: #ffe1dc;
 
-  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-display: "Archivo Black", "Arial Black", sans-serif;
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  --radius-brand: 6px;
+  --radius-brand: 10px;
+
+  --shadow-hard-sm: 3px 3px 0 0 var(--color-ink);
+  --shadow-hard: 6px 6px 0 0 var(--color-ink);
+  --shadow-hard-lg: 10px 10px 0 0 var(--color-ink);
 }
 
 /* `js:` variant: styles that only apply once main.js has run */
 @custom-variant js (&:where(.js *));
 
 @layer base {
-  html { scroll-padding-top: 5rem; }
+  html { scroll-padding-top: 5.5rem; }
   @media (prefers-reduced-motion: no-preference) {
     html { scroll-behavior: smooth; }
   }
-  body { @apply bg-chalk text-ink font-sans leading-relaxed; }
+  body { @apply bg-accent font-sans leading-relaxed text-ink; }
 
-  h1, h2, h3 { @apply font-display font-bold leading-[1.05] tracking-[0.01em]; }
-  h2 { @apply mb-4 text-[clamp(2rem,5vw,2.75rem)] uppercase; }
-  h3 { @apply mb-4 text-2xl; }
+  h1, h2, h3 { @apply font-display font-normal leading-[1.05]; }
+  h2 { @apply mb-6 text-[clamp(1.9rem,5vw,2.75rem)] uppercase; }
+  h3 { @apply mb-3 text-xl; }
 
   /* Focus colour switches per background: set --focus on dark sections */
-  :focus-visible { outline: 3px solid var(--focus, var(--color-pitch)); outline-offset: 3px; }
+  :focus-visible { outline: 3px solid var(--focus, var(--color-ink)); outline-offset: 3px; }
+}
+
+/* Box: the basic neobrutalist surface (a utility so components can @apply it) */
+@utility box {
+  @apply rounded-brand border-[3px] border-ink bg-white shadow-hard;
 }
 
 /* ==========================================================================
@@ -48,67 +58,104 @@
    ========================================================================== */
 @layer components {
   .container-page { @apply mx-auto w-full max-w-6xl px-4; }
-  .section { @apply py-16; }
-  .section-intro { @apply mb-4 max-w-2xl text-lg text-muted; }
+  .section { @apply border-b-[3px] border-ink py-16; }
+  .section-intro { @apply mb-6 max-w-2xl text-lg; }
 
-  /* One primary button style, reserved for the main action */
+  /* One primary button style, reserved for the main action. Presses into its shadow. */
   .btn-primary {
     @apply inline-flex min-h-12 cursor-pointer items-center justify-center rounded-brand
-      border-2 border-pitch bg-floodlight px-6 py-3 font-semibold leading-tight
-      text-pitch no-underline hover:bg-floodlight-light;
+      border-[3px] border-ink bg-primary px-6 py-3 font-bold leading-tight text-ink
+      no-underline shadow-hard-sm
+      hover:bg-primary-hover active:translate-x-[3px] active:translate-y-[3px] active:shadow-none;
+  }
+  .btn-secondary {
+    @apply inline-flex min-h-12 cursor-pointer items-center justify-center rounded-brand
+      border-[3px] border-ink bg-white px-6 py-3 font-bold leading-tight text-ink
+      no-underline shadow-hard-sm hover:bg-accent
+      active:translate-x-[3px] active:translate-y-[3px] active:shadow-none;
   }
 
   .nav-link {
-    @apply block py-3 font-semibold no-underline hover:underline hover:underline-offset-4
-      max-md:border-t max-md:border-chalk/20 md:py-2;
+    @apply block py-3 font-bold no-underline hover:underline hover:decoration-[3px]
+      hover:underline-offset-4 max-lg:border-t-2 max-lg:border-ink lg:py-2;
   }
 
-  .card { @apply rounded-brand border-2 border-mint bg-white p-6; }
+  .sticker {
+    @apply inline-block rounded-brand border-[3px] border-ink bg-white px-3 py-1 text-ink
+      text-sm font-bold uppercase tracking-[0.06em] shadow-hard-sm;
+  }
+
+  /* Hero decoration (all aria-hidden) */
+  .deco-ring { @apply rounded-full border-accent; }
+  .deco-x { @apply fill-none stroke-white stroke-[1.5]; }
+  .deco-dots {
+    background-image: radial-gradient(var(--color-accent) 1.5px, transparent 2px);
+    background-size: 20px 20px;
+  }
+  /* Goal-mouth bracket under the headline */
+  .goal-frame {
+    @apply relative pb-4;
+    &::after {
+      content: "";
+      @apply absolute -inset-x-4 bottom-0 h-1/2 border-x-[6px] border-b-[6px] border-accent;
+    }
+  }
+
+  .card { @apply box p-6; }
   .badge {
-    @apply mb-4 inline-grid size-10 place-items-center rounded-full bg-pitch
-      font-display text-xl font-bold text-floodlight;
+    @apply mb-4 inline-grid size-11 place-items-center rounded-full border-[3px] border-ink
+      bg-primary font-display text-lg;
   }
 
   .tab {
-    @apply min-h-12 flex-1 cursor-pointer rounded-t-brand bg-mint p-2 font-display text-lg
-      font-bold uppercase leading-tight text-pitch hover:bg-mint-dark
-      aria-selected:bg-pitch aria-selected:text-chalk;
+    @apply min-h-12 flex-1 cursor-pointer rounded-brand border-[3px] border-ink bg-white px-2
+      font-bold leading-tight shadow-hard-sm hover:bg-accent
+      aria-selected:translate-x-[3px] aria-selected:translate-y-[3px]
+      aria-selected:bg-primary aria-selected:shadow-none;
   }
-  .tab-panel { @apply rounded-b-brand bg-chalk p-6 sm:p-8; }
-  .fact { @apply grid grid-cols-[5rem_1fr] gap-4 border-b border-mint py-2; }
-  .fact dt { @apply font-semibold; }
+  .tab-panel { @apply box mt-4 p-6 sm:p-8; }
+  .fact { @apply grid grid-cols-[5rem_1fr] gap-4 border-b-2 border-dashed border-ink py-2; }
+  .fact dt { @apply font-bold; }
 
-  .timeline-item { @apply grid gap-1 rounded-brand border-l-[6px] border-pitch-light bg-white px-6 py-4; }
-  .timeline-item time { @apply font-display text-xl font-bold uppercase; }
+  .timeline-item { @apply box grid gap-1 px-5 py-4; }
+  .timeline-item time { @apply font-display text-lg uppercase; }
 
-  .stat { @apply rounded-brand border-2 border-pitch-light p-6; }
-  .stat strong { @apply block font-display text-5xl leading-none font-bold text-floodlight; }
+  .stat { @apply box flex items-center gap-5 p-4 pr-6 font-semibold sm:text-lg; }
+  .stat strong {
+    @apply grid h-20 min-w-20 flex-none place-items-center rounded-brand border-[3px] border-ink
+      bg-accent px-3 font-display text-4xl font-normal leading-none;
+  }
 
   .field { @apply mb-6 min-w-0 border-0 p-0; }
-  .field-label { @apply mb-1 block font-semibold; }
+  .field-label { @apply mb-1 block font-bold; }
   .field-hint { @apply font-normal text-muted; }
   .field-input {
-    @apply min-h-12 w-full rounded-brand border-2 border-muted bg-white px-3 py-2 text-ink
-      aria-invalid:border-error;
+    @apply min-h-12 w-full rounded-brand border-[3px] border-ink bg-white px-3 py-2 text-ink
+      focus-visible:shadow-hard-sm aria-invalid:border-error aria-invalid:bg-error-bg;
   }
-  .field-error { @apply mt-1 text-[0.9375rem] font-semibold text-error empty:hidden; }
+  .field-error { @apply mt-1 text-[0.9375rem] font-bold text-error empty:hidden; }
   .form-status {
-    @apply mb-6 space-y-1 rounded-brand border-l-[6px] p-4 empty:hidden
+    @apply mb-6 space-y-1 rounded-brand border-[3px] p-4 font-semibold empty:hidden
       data-[state=error]:border-error data-[state=error]:bg-error-bg data-[state=error]:text-error
-      data-[state=success]:border-pitch data-[state=success]:bg-mint data-[state=success]:text-pitch;
+      data-[state=success]:border-ink data-[state=success]:bg-primary data-[state=success]:text-ink;
   }
   .choice { @apply mt-2 flex items-start gap-2; }
-  .choice input { @apply mt-0.5 size-5 flex-none accent-pitch; }
+  .choice input { @apply mt-0.5 size-5 flex-none accent-ink; }
 
-  .faq-item { @apply border-b-2 border-mint; }
+  .faq-item { @apply box mb-4 overflow-hidden shadow-hard-sm; }
   .faq-item summary {
-    @apply ml-5 cursor-pointer list-outside py-4 text-lg font-semibold
-      marker:text-pitch-light [[open]>&]:text-pitch-light;
+    @apply cursor-pointer list-inside px-5 py-4 text-lg font-bold
+      hover:bg-accent [[open]>&]:border-b-[3px] [[open]>&]:border-ink [[open]>&]:bg-primary;
   }
-  .faq-item p { @apply mb-4 ml-5 text-muted; }
+  .faq-item p { @apply px-5 py-4; }
+}
+
+/* Button press: animate only when the visitor hasn't asked for reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  .btn-primary, .btn-secondary, .tab { transition: transform 80ms, box-shadow 80ms, background-color 80ms; }
 }
 
 /* Collapsed mobile menu, only once JS is there to open it */
-@media (width < 48rem) {
+@media (width < 64rem) {
   .js .site-nav:not(.is-open) { display: none; }
 }

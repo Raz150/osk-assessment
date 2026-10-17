@@ -5,79 +5,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Second-Half League | Gameweek Club, Bukit Cempaka fantasy football</title>
   <meta name="description" content="Missed the start of the Malaysia Super League fantasy season? Join Gameweek Club's friendly Second-Half League in Bukit Cempaka, Selangor from the second round. Three formats, trophies not cash, donations to Cempaka Muda FC.">
-  <meta name="theme-color" content="#0f3d2e">
+  <meta name="theme-color" content="#ff7ce0">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="css/styles.css">
   <script type="module" src="js/main.js"></script>
 </head>
 <body>
-  <a class="absolute -top-40 left-4 z-[100] bg-floodlight px-4 py-2 font-semibold text-pitch focus:top-2" href="#main">Skip to content</a>
+  <a class="absolute -top-40 left-4 z-[100] rounded-brand border-[3px] border-ink bg-primary px-4 py-2 font-bold focus:top-2" href="#main">Skip to content</a>
 
-  <header class="sticky top-0 z-50 bg-pitch text-chalk [--focus:var(--color-floodlight)]">
-    <div class="container-page flex min-h-16 flex-wrap items-center justify-between gap-2">
-      <a class="font-display text-[1.75rem] font-bold uppercase tracking-[0.02em] no-underline" href="#top" aria-label="Gameweek Club home">Gameweek<span class="ml-[0.15em] text-floodlight">Club</span></a>
-      <button class="nav-toggle hidden min-h-11 cursor-pointer rounded-brand border-2 border-current px-4 font-semibold js:max-md:inline-block" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-      <nav id="site-nav" class="site-nav max-md:w-full max-md:pb-4" aria-label="Main">
-        <ul class="flex flex-col md:flex-row md:flex-wrap md:items-center md:gap-x-6 md:gap-y-2">
+  <header class="sticky top-0 z-50 flex flex-wrap items-stretch border-b-[3px] border-ink bg-white">
+    <a class="flex min-h-[4.5rem] items-center border-r-[3px] border-ink bg-primary px-4 font-display text-xl uppercase tracking-[0.04em] no-underline lg:px-8" href="#top" aria-label="Gameweek Club home">Gameweek<span class="ml-1 inline-block -rotate-2 rounded-brand border-[3px] border-ink bg-white px-1.5">Club</span></a>
+    <button class="nav-toggle btn-secondary my-auto mr-4 ml-auto hidden min-h-11 px-4 py-1 js:max-lg:inline-flex" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav flex items-center max-lg:w-full max-lg:border-t-[3px] max-lg:border-ink max-lg:px-4 max-lg:pb-4 lg:ml-auto lg:pr-8" aria-label="Main">
+        <ul class="flex flex-col max-lg:w-full lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-8 lg:gap-y-2">
           <li><a class="nav-link" href="#how">How it works</a></li>
           <li><a class="nav-link" href="#formats">Formats</a></li>
           <li><a class="nav-link" href="#dates">Key dates</a></li>
           <li><a class="nav-link" href="#faq">FAQ</a></li>
-          <li><a class="btn-primary min-h-10 px-4 py-2 max-md:mt-2 max-md:w-full" href="#register">Register</a></li>
+          <li><a class="btn-primary min-h-10 px-4 py-2 max-lg:mt-2 max-lg:w-full" href="#register">Register</a></li>
         </ul>
-      </nav>
-    </div>
+    </nav>
   </header>
 
   <main id="main">
-    <section class="bg-pitch pt-12 pb-16 text-chalk [--focus:var(--color-floodlight)]" id="top" aria-labelledby="hero-title">
-      <div class="container-page grid items-center gap-8 lg:grid-cols-[1.2fr_1fr]">
-        <div>
-          <p class="mb-4 text-sm font-semibold uppercase tracking-[0.08em] text-floodlight">Malaysia Super League · Liga Pusingan Kedua</p>
-          <h1 id="hero-title" class="mb-4 text-[clamp(2.6rem,8vw,4.5rem)] uppercase">Missed the start? <span class="block text-floodlight">Join the second half.</span></h1>
-          <p class="max-w-xl text-lg">Your Super League team fell apart by October, or you never got round to picking one. Our friendly Bukit Cempaka mini-league resets for the second round so everyone starts level. Play for trophies and bragging rights at the mamak, and your entry goes to Cempaka Muda FC. Jom!</p>
-          <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4">
-            <a class="btn-primary" href="#register">Register interest</a>
-            <a class="font-semibold underline underline-offset-4" href="#formats">See the formats</a>
-          </div>
+    <section class="relative grid overflow-hidden border-b-[3px] border-ink bg-ink text-white [--focus:var(--color-primary)] lg:grid-cols-[7%_40%_1fr] xl:grid-cols-[10%_34%_1fr]" id="top" aria-labelledby="hero-title">
+      <div class="relative hidden lg:block" aria-hidden="true">
+        <span class="deco-ring absolute top-16 left-1/2 size-12 -translate-x-1/2 border-[12px]"></span>
+        <svg class="deco-x absolute top-[42%] left-1/2 size-16 -translate-x-1/2" viewBox="0 0 40 40"><polygon points="15,0 25,0 25,15 40,15 40,25 25,25 25,40 15,40 15,25 0,25 0,15 15,15" transform="rotate(45 20 20) scale(.9) translate(2.2 2.2)"/></svg>
+        <span class="deco-dots absolute bottom-48 left-1/2 h-20 w-24 -translate-x-1/2"></span>
+        <span class="absolute bottom-0 left-1/2 h-36 w-3/4 max-w-24 -translate-x-1/2 rounded-t-full bg-accent"></span>
+      </div>
+
+      <div class="relative bg-ink-soft px-4 py-14 sm:px-10 sm:pt-32 lg:px-10 lg:pb-20">
+        <span class="deco-ring absolute top-8 left-1/2 hidden size-16 -translate-x-1/2 border-[20px] sm:block" aria-hidden="true"></span>
+        <p class="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-accent">Malaysia Super League · Liga Pusingan Kedua</p>
+        <h1 id="hero-title" class="uppercase">
+          <span class="block text-xl tracking-[0.06em] text-accent">Missed the start?</span>
+          <span class="goal-frame mt-2 block text-[clamp(2.5rem,6vw,4rem)] leading-[0.95] text-primary">Join the second half.</span>
+        </h1>
+        <p class="mt-8 max-w-md text-lg text-accent">Your Super League Fantasy team fell apart by October, or you never got round to picking one. Our friendly Bukit Cempaka mini-league resets for the second round so everyone starts level. Play for trophies and bragging rights at the mamak, and your entry goes to Cempaka Muda FC. Jom!</p>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a class="btn-primary" href="#register">Register Interest</a>
+          <a class="btn-secondary" href="#formats">See The Formats</a>
         </div>
-        <img class="w-full max-w-md justify-self-center lg:max-w-none" src="assets/hero-pitch.svg" alt="" width="480" height="400">
+      </div>
+
+      <div class="relative flex items-center justify-center px-6 py-14 sm:px-12 lg:py-20">
+        <span class="absolute inset-y-0 left-[58%] w-[16%] bg-ink-soft" aria-hidden="true"></span>
+        <span class="absolute inset-x-0 top-[62%] h-20 bg-primary" aria-hidden="true"></span>
+        <svg class="deco-x absolute top-10 left-6 size-12 sm:left-10" viewBox="0 0 40 40" aria-hidden="true"><polygon points="15,0 25,0 25,15 40,15 40,25 25,25 25,40 15,40 15,25 0,25 0,15 15,15" transform="rotate(45 20 20) scale(.9) translate(2.2 2.2)"/></svg>
+        <span class="deco-dots absolute bottom-8 left-6 hidden h-20 w-40 sm:block" aria-hidden="true"></span>
+        <span class="deco-dots absolute top-[30%] right-6 hidden h-40 w-20 xl:block" aria-hidden="true"></span>
+        <span class="absolute top-0 right-6 h-28 w-28 rounded-b-full bg-accent max-sm:hidden" aria-hidden="true"></span>
+        <span class="deco-ring absolute right-8 bottom-8 size-20 border-[24px] max-sm:hidden" aria-hidden="true"></span>
+
+        <div class="relative w-full max-w-sm border-[16px] border-accent sm:max-w-md sm:border-[24px]">
+          <img class="aspect-[4/5] w-full object-cover object-[center_60%] contrast-110 grayscale" src="assets/hero-1200.webp" srcset="assets/hero-800.webp 800w, assets/hero-1200.webp 1200w" sizes="(min-width: 64rem) 30vw, 90vw" width="1200" height="1552" fetchpriority="high" alt="A player strikes a volley on an artificial pitch, the ball flying towards a small goal">
+          <span class="sticker absolute -top-8 -left-8 -rotate-6 bg-primary text-base" aria-hidden="true">Pusingan 2</span>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="how" aria-labelledby="how-title">
+    <section class="section bg-white" id="how" aria-labelledby="how-title">
       <div class="container-page">
         <h2 id="how-title">How it works</h2>
-        <ol class="grid gap-4 sm:grid-cols-3">
+        <ol class="grid gap-6 sm:grid-cols-3">
           <li class="card">
             <span class="badge" aria-hidden="true">1</span>
             <h3>Register interest</h3>
-            <p class="text-muted">Tell us your team name and pick a format. It takes about a minute.</p>
+            <p>Tell us your team name and pick a format. It takes about a minute.</p>
           </li>
           <li class="card">
             <span class="badge" aria-hidden="true">2</span>
             <h3>Get your league code</h3>
-            <p class="text-muted">We email a code before the deadline. Enter it in the free fantasy game you already use.</p>
+            <p>We email a code before the deadline. Enter it in the free fantasy game you already use.</p>
           </li>
           <li class="card">
             <span class="badge" aria-hidden="true">3</span>
             <h3>Play the second round</h3>
-            <p class="text-muted">Only points from the first gameweek after the mid-season break to the final matchday count. Your first-round score doesn't matter here.</p>
+            <p>Only points from the first gameweek after the mid-season break to the final matchday count. Your first-round score doesn't matter here.</p>
           </li>
         </ol>
       </div>
     </section>
 
-    <section class="section bg-white" id="formats" aria-labelledby="formats-title">
+    <section class="section" id="formats" aria-labelledby="formats-title">
       <div class="container-page">
         <h2 id="formats-title">Choose your format</h2>
         <p class="section-intro">Three ways to play, all running at the same time. You can switch format until registration closes.</p>
 
-        <div class="mt-6">
-          <div class="flex gap-1 border-b-[3px] border-pitch lg:max-w-xl" role="tablist" aria-label="League formats">
+        <div>
+          <div class="flex gap-3 lg:max-w-xl" role="tablist" aria-label="League formats">
             <button class="tab" type="button" role="tab" id="tab-classic" aria-controls="panel-classic" aria-selected="true">Classic</button>
             <button class="tab" type="button" role="tab" id="tab-h2h" aria-controls="panel-h2h" aria-selected="false">Head-to-Head</button>
             <button class="tab" type="button" role="tab" id="tab-beginners" aria-controls="panel-beginners" aria-selected="false">Beginners</button>
@@ -122,35 +143,45 @@
       </div>
     </section>
 
-    <section class="section" id="dates" aria-labelledby="dates-title">
+    <section class="section bg-white" id="dates" aria-labelledby="dates-title">
       <div class="container-page">
         <h2 id="dates-title">Key dates</h2>
-        <ol class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ol class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <li class="timeline-item"><time datetime="2026-11-02">Mon 2 Nov 2026</time><span>Registration opens</span></li>
-          <li class="timeline-item border-floodlight bg-pitch text-chalk"><time datetime="2026-12-30">Wed 30 Dec 2026</time><span>Registration closes at 6pm (MYT)</span></li>
+          <li class="timeline-item bg-primary"><time datetime="2026-12-30">Wed 30 Dec 2026</time><span>Registration closes at 6pm (MYT)</span></li>
           <li class="timeline-item"><time datetime="2027-01-09">Sat 9 Jan 2027</time><span>Second round kicks off</span></li>
           <li class="timeline-item"><time datetime="2027-05-29">Sat 29 May 2027</time><span>Awards night and makan at Dewan Komuniti Bukit Cempaka</span></li>
         </ol>
       </div>
     </section>
 
-    <section class="section bg-pitch text-chalk [--focus:var(--color-floodlight)]" id="charity" aria-labelledby="charity-title">
-      <div class="container-page">
-        <h2 id="charity-title">Where your entry goes</h2>
-        <p class="mb-4 max-w-2xl text-lg">There's no cash prize. Every donation goes to Cempaka Muda FC, a volunteer-run club for 160 players aged 6 to 16. Last season's league raised RM6,850, which paid for:</p>
-        <ul class="mt-6 grid gap-4 sm:grid-cols-3">
-          <li class="stat"><strong>3</strong> new sets of jerseys</li>
-          <li class="stat"><strong>40</strong> hours of floodlit padang hire</li>
-          <li class="stat"><strong>6</strong> volunteers through grassroots coaching courses</li>
-        </ul>
+    <section class="section bg-primary" id="charity" aria-labelledby="charity-title">
+      <div class="container-page grid items-center gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+        <div>
+          <h2 id="charity-title">Where your entry goes</h2>
+          <p class="section-intro">There's no cash prize. Every donation goes to Cempaka Muda FC, a volunteer-run club for 160 players aged 6 to 16.</p>
+          <p class="inline-block -rotate-2 rounded-brand border-[3px] border-ink bg-ink px-6 py-4 text-white shadow-[6px_6px_0_0_var(--color-white)]">
+            <span class="block text-sm font-bold uppercase tracking-[0.15em] text-accent">Raised last season</span>
+            <strong class="block font-display text-[clamp(2rem,10vw,3.75rem)] font-normal text-primary">RM68,505</strong>
+          </p>
+        </div>
+
+        <div>
+          <p class="mb-4 font-bold uppercase tracking-[0.15em]">Which paid for</p>
+          <ul class="grid gap-5">
+            <li class="stat"><strong>3</strong><span>new sets of jerseys for the under-10s and under-12s</span></li>
+            <li class="stat lg:ml-8"><strong>40</strong><span>hours of floodlit pitches hire for evening training</span></li>
+            <li class="stat"><strong>6</strong><span>volunteers through grassroots coaching courses</span></li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <section class="section" id="register" aria-labelledby="register-title">
-      <div class="container-page grid items-start gap-8 lg:grid-cols-[1fr_1.3fr] lg:gap-12">
+      <div class="container-page grid items-start gap-10 lg:grid-cols-[1fr_1.3fr] lg:gap-12">
         <div>
           <h2 id="register-title">Register interest</h2>
-          <p class="mb-6 rounded-brand border-l-[6px] border-pitch bg-mint p-4"><strong>Demo form:</strong> this is a portfolio project. Nothing you type is sent, stored or logged.</p>
+          <p class="mb-6 rounded-brand border-[3px] border-dashed border-ink bg-white p-4"><strong>Demo form:</strong> this is a portfolio project. Nothing you type is sent, stored or logged.</p>
           <h3>What happens next</h3>
           <ul class="list-disc space-y-2 pl-5">
             <li>You'll get your league code by email before 30 December.</li>
@@ -159,7 +190,7 @@
           </ul>
         </div>
 
-        <form class="card" id="register-form" novalidate>
+        <form class="box p-6 sm:p-8" id="register-form" novalidate>
           <div class="form-status" id="form-status" role="status" tabindex="-1"></div>
 
           <div class="field">
@@ -240,15 +271,15 @@
     </section>
   </main>
 
-  <footer class="bg-ink py-12 text-chalk [--focus:var(--color-floodlight)]">
+  <footer class="bg-ink py-12 text-white [--focus:var(--color-primary)]">
     <div class="container-page grid gap-6 sm:grid-cols-2">
       <div>
-        <p class="mb-2 font-display text-[1.75rem] font-bold uppercase tracking-[0.02em]">Gameweek<span class="ml-[0.15em] text-floodlight">Club</span></p>
+        <p class="mb-3 font-display text-2xl uppercase">Gameweek<span class="ml-1 inline-block -rotate-2 rounded-brand border-[3px] border-white bg-primary px-1.5 text-ink">Club</span></p>
         <p>A volunteer-run fantasy football league in Bukit Cempaka, Selangor.<br>hello@gameweekclub.example</p>
       </div>
-      <div class="space-y-4 text-sm opacity-90">
+      <div class="space-y-4 text-sm">
         <p>Fictional organisation created for a web design assessment. Not affiliated with the Malaysian Football League (MFL), the Malaysia Super League, any club or any official fantasy game.</p>
-        <p>Illustrations by the author. Fonts: Barlow Condensed and Inter (SIL Open Font License) via Google Fonts. Styles built with Tailwind CSS (MIT).</p>
+        <p>Hero photo: <a class="underline" href="https://commons.wikimedia.org/wiki/File:The_Final_Match_(5194796996).jpg">"The Final Match"</a> by Azlan DuPree, <a class="underline" href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>, cropped and resized. Fonts: Archivo Black and Inter (SIL Open Font License) via Google Fonts. Styles built with Tailwind CSS (MIT).</p>
       </div>
     </div>
   </footer>
